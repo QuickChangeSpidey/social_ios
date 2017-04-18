@@ -76,6 +76,13 @@
         }
     }];
     
+    UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"More" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        
+        UIActivityViewController *morevc = [[UIActivityViewController alloc]initWithActivityItems:@[self.tweetTextView.text] applicationActivities:nil];
+        [self presentViewController:morevc animated:YES completion:nil];
+           }];
+
+    [actionController addAction:moreAction];
     [actionController addAction:tweetAction];
     [actionController addAction:facebookAction];
     [actionController addAction:action];
