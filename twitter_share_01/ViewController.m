@@ -12,6 +12,8 @@
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
+@property (weak, nonatomic) IBOutlet UITextView *fbTextView;
+@property (weak, nonatomic) IBOutlet UITextView *moreTextView;
 
 
 -(void)configureTweetTextView;
@@ -28,6 +30,10 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 
+}
+- (IBAction)showFacebook:(id)sender {
+    
+    
 }
 
 - (IBAction)showShare:(id)sender {
@@ -62,13 +68,7 @@
         
         if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]){
             SLComposeViewController *facebookvc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-            if([self.tweetTextView.text length]<140){
                 [facebookvc setInitialText:self.tweetTextView.text];
-            }
-            else{
-                NSString *shortText = [self.tweetTextView.text substringToIndex:140 ];
-                [facebookvc setInitialText:shortText];
-            }
             [self presentViewController:facebookvc animated:YES completion:nil];
         }
         else{
@@ -96,27 +96,47 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [self configureTweetTextView];
+    [self configureFacebookTextView];
+    [self configureMoreTextView];
     
     
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+-(void)configureFacebookTextView{
+    
+    self.fbTextView.layer.backgroundColor = [UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.2].CGColor;
+    
+    self.fbTextView.layer.cornerRadius =10.0;
+    
+    self.fbTextView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:0.9].CGColor;
+    
+    self.fbTextView.layer.borderWidth = 2.0;
 
+
+}
 
 -(void)configureTweetTextView{
 
-
-    self.tweetTextView.layer.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:0.9 alpha:1.0].CGColor;
+    self.tweetTextView.layer.backgroundColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.2].CGColor;
     
     self.tweetTextView.layer.cornerRadius =10.0;
     
     self.tweetTextView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:0.9].CGColor;
     
     self.tweetTextView.layer.borderWidth = 2.0;
+    
+}
+
+-(void)configureMoreTextView{
+    
+    self.moreTextView.layer.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.2].CGColor;
+    
+    self.moreTextView.layer.cornerRadius =10.0;
+    
+    self.moreTextView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:0.9].CGColor;
+    
+    self.moreTextView.layer.borderWidth = 2.0;
     
 }
 @end
