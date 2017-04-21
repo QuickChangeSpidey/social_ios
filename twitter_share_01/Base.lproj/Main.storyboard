@@ -38,9 +38,15 @@
                                     </barButtonItem>
                                     <barButtonItem title="Item" systemItem="action" id="xyG-gO-0rN">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="showMore:" destination="BYZ-38-t0r" id="BpU-7c-MVT"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Item" systemItem="action" id="DZD-qp-UlC">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="doNothing:" destination="BYZ-38-t0r" id="NMc-6P-6Gw"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                                 <color key="barTintColor" cocoaTouchSystemColor="darkTextColor"/>
