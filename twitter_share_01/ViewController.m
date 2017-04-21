@@ -36,14 +36,7 @@
     if([self.fbTextView isFirstResponder]){
         [self.fbTextView resignFirstResponder];
     }
-    
-    UIAlertController *actionController = [UIAlertController alertControllerWithTitle:@"Get Social" message:@"Post your message to the social network" preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
-    
-    UIAlertAction *fbAction = [UIAlertAction actionWithTitle:@"Facebook" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]){
-            
             SLComposeViewController *fbvc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
             if([self.fbTextView.text length]<140){
                 [fbvc setInitialText:self.fbTextView.text];
@@ -57,59 +50,24 @@
         else{
             [self showMessage:@"please sign in to facebook"];
         }
-    }];
-    
-    [actionController addAction:action];
-    [actionController addAction:fbAction];
-
-    
-    [self presentViewController:actionController animated:NO completion:nil];
-
-    
-    
-    
 }
 - (IBAction)doNothing:(id)sender {
-    
     UIAlertController *actionController = [UIAlertController alertControllerWithTitle:@"No way!!" message:@"This button does absolutely nothing!!!" preferredStyle:UIAlertControllerStyleAlert];
-
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
-    
     [actionController addAction:action];
-    
     [self presentViewController:actionController animated:NO completion:nil];
-        
+    
 }
 - (IBAction)showMore:(id)sender {
-    
-    UIAlertController *actionController = [UIAlertController alertControllerWithTitle:@"Get Social" message:@"Post your message to the social network" preferredStyle:UIAlertControllerStyleAlert];
-
-    
-    UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"More" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        
         UIActivityViewController *morevc = [[UIActivityViewController alloc]initWithActivityItems:@[self.moreTextView.text] applicationActivities:nil];
         [self presentViewController:morevc animated:YES completion:nil];
-    }];
-    
-    
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
-    
-    [actionController addAction:moreAction];
-    [actionController addAction:action];
-    [self presentViewController:actionController animated:YES completion:nil];
 }
 
 - (IBAction)showShare:(id)sender {
-    
     if([self.tweetTextView isFirstResponder]){
             [self.tweetTextView resignFirstResponder];
     }
-    
-    UIAlertController *actionController = [UIAlertController alertControllerWithTitle:@"Get Social" message:@"Post your message to the social network" preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
-        
-    UIAlertAction *tweetAction = [UIAlertAction actionWithTitle:@"Tweet" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+
         if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
             
             SLComposeViewController *twittervc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
@@ -125,14 +83,8 @@
         else{
             [self showMessage:@"please sign in to twitter"];
         }
-    }];
-    
-    [actionController addAction:tweetAction];
-    [actionController addAction:action];
-    
-    [self presentViewController:actionController animated:NO completion:nil];
-    
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
